@@ -1,0 +1,11 @@
+# OS files
+Thumbs.db
+.DS_Store
+
+# Browser cache / temporary files
+AppData/
+*.tmp
+*.cache
+
+# Environment variables (if we use .env later)
+.env
