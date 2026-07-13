@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amjad Al Rajeh | Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0c0c;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(12, 12, 12, 0.95);
+            backdrop-filter: blur(20px);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #888888;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            padding: 120px 60px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-right: 40px;
+        }
+
+        .hero-greeting {
+            font-size: 14px;
+            color: #666666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 10vw, 120px);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 18px;
+            color: #888888;
+            margin-bottom: 40px;
+            max-width: 400px;
+        }
+
+        .hero-description {
+            font-size: 15px;
+            color: #666666;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            max-width: 450px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .btn-primary {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 14px 32px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #dddddd;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #444444;
+            padding: 14px 32px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: #ffffff;
+        }
+
+        .hero-photo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 80vh;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+
+        .hero-photo:hover img {
+            filter: grayscale(0%);
+        }
+
+        .hero-accent {
+            position: absolute;
+            top: 50%;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #6b5bff 0%, #a855f7 100%);
+            opacity: 0.15;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 100px 30px 40px;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                text-align: center;
+                align-items: center;
+            }
+
+            .hero-description {
+                text-align: center;
+            }
+
+            .hero-photo {
+                margin-top: 60px;
+            }
+
+            .hero-photo img {
+                height: 60vh;
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .scroll-indicator span {
+            font-size: 12px;
+            color: #666666;
+            letter-spacing: 2px;
+            transform: rotate(-90deg);
+            transform-origin: left bottom;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, #ffffff, transparent);
+        }
+
+        @media (max-width: 1024px) {
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 120px 60px;
+            position: relative;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 80px;
+            font-weight: 700;
+            color: #222222;
+            line-height: 1;
+        }
+
+        .section-title-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            color: #666666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: #333333;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 80px 30px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                margin-bottom: 50px;
+            }
+
+            .section-line {
+                width: 100px;
+                height: 1px;
+            }
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .about-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #222222;
+        }
+
+        .info-label {
+            color: #666666;
+            font-size: 14px;
+        }
+
+        .info-value {
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .about-text {
+            color: #888888;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        .about-text p {
+            margin-bottom: 25px;
+        }
+
+        .languages {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .language-tag {
+            background: #1a1a1a;
+            padding: 8px 20px;
+            font-size: 13px;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: #111111;
+            padding: 40px 30px;
+            border: 1px solid #1a1a1a;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: #333333;
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #666666;
+        }
+
+        .skill-name {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .skill-description {
+            font-size: 13px;
+            color: #666666;
+        }
+
+        @media (max-width: 1200px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Experience Section */
+        .experience-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 40px;
+            padding: 40px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .experience-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #666666;
+        }
+
+        .experience-details h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .experience-details p {
+            color: #888888;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .experience-item {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111111;
+            font-size: 18px;
+        }
+
+        .contact-details a,
+        .contact-details p {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .contact-details span {
+            display: block;
+            color: #666666;
+            font-size: 12px;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            color: #666666;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: #111111;
+            border: 1px solid #1a1a1a;
+            padding: 15px;
+            color: #ffffff;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #444444;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px;
+            border-top: 1px solid #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .footer-right {
+            font-size: 13px;
+            color: #666666;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            color: #888888;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+                padding: 40px 30px;
+            }
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Stagger delays for grid items */
+        .skills-grid .skill-card:nth-child(1) { transition-delay: 0.1s; }
+        .skills-grid .skill-card:nth-child(2) { transition-delay: 0.2s; }
+        .skills-grid .skill-card:nth-child(3) { transition-delay: 0.3s; }
+        .skills-grid .skill-card:nth-child(4) { transition-delay: 0.4s; }
+        .skills-grid .skill-card:nth-child(5) { transition-delay: 0.5s; }
+        .skills-grid .skill-card:nth-child(6) { transition-delay: 0.6s; }
+        .skills-grid .skill-card:nth-child(7) { transition-delay: 0.7s; }
+        .skills-grid .skill-card:nth-child(8) { transition-delay: 0.8s; }
+
+        .gallery-grid .gallery-item:nth-child(1) { transition-delay: 0.1s; }
+        .gallery-grid .gallery-item:nth-child(2) { transition-delay: 0.2s; }
+        .gallery-grid .gallery-item:nth-child(3) { transition-delay: 0.3s; }
+        .gallery-grid .gallery-item:nth-child(4) { transition-delay: 0.4s; }
+
+        /* Hero entrance animation */
+        .hero-greeting {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-name {
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-title {
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .hero-description {
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        .hero-buttons {
+            animation: fadeInUp 0.8s ease-out 1s both;
+        }
+
+        .hero-photo {
+            animation: fadeInRight 0.8s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Button pulse effect */
+        .btn-primary:hover {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">AR</div>
+        <ul class="nav-links">
+            <li><a href="#about">Über mich</a></li>
+            <li><a href="#skills">Fähigkeiten</a></li>
+            <li><a href="#experience">Erfahrung</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-greeting">Willkommen in meinem Portfolio</p>
+            <h1 class="hero-name">Amjad<br>Al Rajeh</h1>
+            <p class="hero-title">Motivierter junger Bewerber | Bereit zu arbeiten</p>
+            <p class="hero-description">
+                Motivierter und zuverlässiger junger Bewerber mit schulischen und praktischen Erfahrungen in Stendal. Ich lerne schnell, arbeite gerne im Team und möchte mich beruflich weiterentwickeln.
+            </p>
+            <div class="hero-buttons">
+                <a href="lebenslauf.pdf" download class="btn-primary" style="text-decoration: none; display: inline-block;">Lebenslauf herunterladen</a>
+                <a href="#contact" class="btn-secondary" style="text-decoration: none; display: inline-block;">Kontaktieren Sie mich</a>
+            </div>
+        </div>
+        <div class="hero-photo">
+            <img src="me.jpg" alt="Amjad Al Rajeh">
+            <div class="hero-accent"></div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-header reveal">
+            <span class="section-number">01</span>
+            <div class="section-title-wrapper">
+                <span class="section-label">Über mich</span>
+                <h2 class="section-title">Wer ich bin</h2>
+            </div>
+            <div class="section-line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-info reveal-left">
+                <h3>Persönliche Daten</h3>
+                <div class="info-item">
+                    <span class="info-label">Name</span>
+                    <span class="info-value">Amjad Al Rajeh</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Geburtsdatum</span>
+                    <span class="info-value">08.06.2005</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Adresse</span>
+                    <span class="info-value">Max-Liebermann-Str. 3, 39576 Stendal</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Nationalität</span>
+                    <span class="info-value">Syrisch</span>
+                </div>
+                <div class="languages">
+                    <span class="language-tag">Arabisch (Muttersprache)</span>
+                    <span class="language-tag">Deutsch</span>
+                    <span class="language-tag">Englisch</span>
+                    <span class="language-tag">PC-Grundkenntnisse</span>
+                </div>
+            </div>
+            <div class="about-text reveal-right">
+                <h3>Kurzprofil</h3>
+                <p>
+                    Motivierter und zuverlässiger junger Bewerber mit schulischen und praktischen Erfahrungen in Stendal. Ich lerne schnell, arbeite gerne im Team und möchte mich beruflich weiterentwickeln.
+                </p>
+                <h3 style="margin-top: 30px; font-size: 20px; font-weight: 600;">Interessen</h3>
+                <p>
+                    Fußball und Volleyball, Mathematik und Sport
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills" style="background: #0a0a0a;">
+        <div class="section-header reveal">
+            <span class="section-number">02</span>
+            <div class="section-title-wrapper">
+                <span class="section-label">Meine Fähigkeiten</span>
+                <h2 class="section-title">Kenntnisse</h2>
+            </div>
+            <div class="section-line"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card reveal-scale">
+                <div class="skill-icon">🤝</div>
+                <h4 class="skill-name">Teamarbeit</h4>
+                <p class="skill-description">Guter Mitarbeiter</p>
+            </div>
+            <div class="skill-card reveal-scale">
+                <div class="skill-icon">💪</div>
+                <h4 class="skill-name">Körperliche Fitness</h4>
+                <p class="skill-description">Stark und belastbar</p>
+            </div>
+            <div class="skill-card reveal-scale">
+                <div class="skill-icon">⚡</div>
+                <h4 class="skill-name">Schneller Lerner</h4>
+                <p class="skill-description">Anpassungsfähig</p>
+            </div>
+            <div class="skill-card reveal-scale">
+                <div class="skill-icon">🛡️</div>
+                <h4 class="skill-name">Zuverlässigkeit</h4>
+                <p class="skill-description">Immer pünktlich</p>
+            </div>
+            <div class="skill-card reveal-scale">
+                <div class="skill-icon">🧩</div>
+                <h4 class="skill-name">Problemlösung</h4>
+                <p class="skill-description">Intelligente Lösungen</p>
+            </div>
+            <div class="skill-card reveal-scale">
+                <div class="skill-icon">💬</div>
+                <h4 class="skill-name">Kommunikation</h4>
+                <p class="skill-description">Klar und offen</p>
+            </div>
+            <div class="skill-card reveal-scale">
+                <div class="skill-icon">⏰</div>
+                <h4 class="skill-name">Zeitmanagement</h4>
+                <p class="skill-description">Effiziente Arbeitsweise</p>
+            </div>
+            <div class="skill-card reveal-scale">
+                <div class="skill-icon">⛑️</div>
+                <h4 class="skill-name">Sicherheitsbewusstsein</h4>
+                <p class="skill-description">Sicherheit zuerst</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Praktische Erfahrungen Section -->
+    <section class="section" id="experience">
+        <div class="section-header reveal">
+            <span class="section-number">03</span>
+            <div class="section-title-wrapper">
+                <span class="section-label">Praktische Erfahrungen</span>
+                <h2 class="section-title">Berufliche Erfahrung</h2>
+            </div>
+            <div class="section-line"></div>
+        </div>
+        <div class="experience-item reveal">
+            <div class="experience-year">01/2026 - 02/2026</div>
+            <div class="experience-details">
+                <h3>Gleichbauhelfer</h3>
+                <p>Firma GBB, Stendal</p>
+            </div>
+        </div>
+        <div class="experience-item reveal" style="border-top: 1px solid #222;">
+            <div class="experience-year">08/2024</div>
+            <div class="experience-details">
+                <h3>Casablanca Restaurant</h3>
+                <p>Stendal</p>
+            </div>
+        </div>
+        <div class="experience-item reveal" style="border-top: 1px solid #222;">
+            <div class="experience-year">06/2024</div>
+            <div class="experience-details">
+                <h3>Ali Werkstatt</h3>
+                <p>Stendal</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schulbildung Section -->
+    <section class="section" id="education" style="background: #0a0a0a;">
+        <div class="section-header reveal">
+            <span class="section-number">03.5</span>
+            <div class="section-title-wrapper">
+                <span class="section-label">Schulbildung</span>
+                <h2 class="section-title">Ausbildung</h2>
+            </div>
+            <div class="section-line"></div>
+        </div>
+        <div class="experience-item reveal">
+            <div class="experience-year">09/2024 - 08/2025</div>
+            <div class="experience-details">
+                <h3>Berufsvorbereitende Bildungsmaßnahme</h3>
+                <p>Deutsche Angestellten-Akademie GmbH, Stendal<br>Hauptschulabschluss 2025 erworben</p>
+            </div>
+        </div>
+        <div class="experience-item reveal" style="border-top: 1px solid #222;">
+            <div class="experience-year">08/2021 - 07/2022</div>
+            <div class="experience-details">
+                <h3>Berufsvorbereitungsjahr</h3>
+                <p>Berufsschulzentrum, Stendal</p>
+            </div>
+        </div>
+        <div class="experience-item reveal" style="border-top: 1px solid #222;">
+            <div class="experience-year">08/2017 - 07/2021</div>
+            <div class="experience-details">
+                <h3>Sekundarschule Comenius</h3>
+                <p>Stendal</p>
+            </div>
+        </div>
+        <div class="experience-item reveal" style="border-top: 1px solid #222;">
+            <div class="experience-year">09/2011 - 05/2015</div>
+            <div class="experience-details">
+                <h3>Grundschule Taha Abdulrauuf</h3>
+                <p>Aleppo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" style="background: #0a0a0a;">
+        <div class="section-header reveal">
+            <span class="section-number">05</span>
+            <div class="section-title-wrapper">
+                <span class="section-label">Momente</span>
+                <h2 class="section-title">Galerie</h2>
+            </div>
+            <div class="section-line"></div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item reveal-scale">
+                <img src="me.jpg" alt="Gallery 1">
+            </div>
+            <div class="gallery-item reveal-scale">
+                <img src="me1.jpg" alt="Gallery 2">
+            </div>
+            <div class="gallery-item reveal-scale">
+                <img src="me2.jpg" alt="Gallery 3">
+            </div>
+            <div class="gallery-item reveal-scale">
+                <img src="me3.jpg" alt="Gallery 4">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="section-header reveal">
+            <span class="section-number">06</span>
+            <div class="section-title-wrapper">
+                <span class="section-label">Kontakt</span>
+                <h2 class="section-title">Kontaktieren Sie mich</h2>
+            </div>
+            <div class="section-line"></div>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info reveal-left">
+                <h3>Lassen Sie uns zusammenarbeiten</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <span>E-Mail</span>
+                        <a href="mailto:amjadalrajeh108@gmail.com">amjadalrajeh108@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-details">
+                        <span>Telefon</span>
+                        <a href="tel:+4915129626635">+49 (151) 29626635</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💬</div>
+                    <div class="contact-details">
+                        <span>WhatsApp</span>
+                        <a href="https://wa.me/491624072886" target="_blank">+49 162 4072886</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <span>Adresse</span>
+                        <p>Max-Liebermann-Str. 3, 39576 Stendal</p>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form reveal-right">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" placeholder="Ihr Name" required>
+                </div>
+                <div class="form-group">
+                    <label>E-Mail</label>
+                    <input type="email" name="email" placeholder="ihre@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Nachricht</label>
+                    <textarea name="message" placeholder="Ihre Nachricht..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="align-self: flex-start;">Nachricht senden</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-left">Amjad Al Rajeh</div>
+        <div class="footer-right">
+            <p>© 2026 Amjad Al Rajeh. Alle Rechte vorbehalten.</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/amjad-al-rajeh" target="_blank">in</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Telegram Bot Config
+        const BOT_TOKEN = '8995527998:AAH5x-QGjRiC5GeMOA7EFeHvEU6opgEmp0g';
+        const CHAT_ID = '5928507063';
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            const text = `
+📬 Neue Nachricht von deinem Portfolio!
+
+👤 Name: ${name}
+📧 Email: ${email}
+💬 Nachricht:
+${message}
+            `.trim();
+            
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: text,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                
+                if (response.ok) {
+                    alert('Vielen Dank! Deine Nachricht wurde erfolgreich gesendet!');
+                    this.reset();
+                } else {
+                    alert('Es gab einen Fehler beim Senden der Nachricht. Bitte versuche es später erneut.');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Es gab einen Fehler beim Senden der Nachricht. Bitte versuche es später erneut.');
+            }
+        });
+    </script>
+</body>
+</html>
