@@ -9,3 +9,9 @@ AppData/
 
 # Environment variables (if we use .env later)
 .env
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
